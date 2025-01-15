@@ -47,7 +47,8 @@ namespace WorkoutTracker.Services
 			var claims = new[]
 			{
 				new Claim(JwtRegisteredClaimNames.Sub, model.Username),
-				new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+				new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+				new Claim("userId", model.Id.ToString())
 			};
 
 			var token = new JwtSecurityToken(

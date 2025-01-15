@@ -30,6 +30,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<WorkoutService>();
 
 var app = builder.Build();
 

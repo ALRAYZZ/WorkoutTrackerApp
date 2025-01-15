@@ -6,7 +6,7 @@ using WorkoutTracker.Services;
 namespace WorkoutTracker.Controllers
 {
 	[ApiController]
-	[Route("api/[controller]")]
+	[Route("[controller]")]
 	public class UsersController : Controller
 	{
 		private readonly UserService _userService;
