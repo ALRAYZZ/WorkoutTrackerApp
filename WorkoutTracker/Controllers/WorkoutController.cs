@@ -17,7 +17,11 @@ namespace WorkoutTracker.Controllers
 		{
 			_workoutService=workoutService;
 		}
-
+		/// <summary>
+		/// Create a new workout
+		/// </summary>
+		/// <param name="workoutDto">The Workout details.</param>
+		/// <returns>The created workout.</returns>
 		[HttpPost]
 		public async Task<ActionResult<Workout>> CreateWorkout(WorkoutCreateDto workoutDto)
 		{
@@ -41,7 +45,10 @@ namespace WorkoutTracker.Controllers
 			var createdWorkout = await _workoutService.CreateWorkoutAsync(workout);
 			return Ok(createdWorkout);
 		}
-
+		/// <summary>
+		/// Get all workouts for the authenticated user
+		/// </summary>
+		/// <returns>A list of workouts.</returns>
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<Workout>>> GetWorkouts()
 		{
@@ -57,7 +64,12 @@ namespace WorkoutTracker.Controllers
 		}
 
 
-
+		/// <summary>
+		/// Updated an existing workout.
+		/// </summary>
+		/// <param name="id">The workout ID.</param>
+		/// <param name="workoutDto">The updated workout details.</param>
+		/// <returns>The updated workout.</returns>
 		[HttpPut("{id}")]
 		public async Task<ActionResult<Workout>> UpdateWorkout(int id, WorkoutCreateDto workoutDto)
 		{
@@ -87,7 +99,11 @@ namespace WorkoutTracker.Controllers
 			var updatedWorkout = await _workoutService.UpdateWorkoutAsync(workout);
 			return Ok(updatedWorkout);
 		}
-
+		/// <summary>
+		/// Deletes a workout.
+		/// </summary>
+		/// <param name="id">The workout ID.</param>
+		/// <returns>No content.</returns>
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteWorkout(int id)
 		{
@@ -113,7 +129,10 @@ namespace WorkoutTracker.Controllers
 				return NotFound();
 			}
 		}
-
+		/// <summary>
+		/// Gets pending workouts for the authenticated user.
+		/// </summary>
+		/// <returns>A list of pending workouts.</returns>
 		[HttpGet("pending")]
 		public async Task<ActionResult<IEnumerable<Workout>>> GetPendingWorkoutsByUserId()
 		{
@@ -126,7 +145,10 @@ namespace WorkoutTracker.Controllers
 			}
 			return Ok(workouts);
 		}
-
+		/// <summary>
+		/// Gets completed workouts for the authenticated user.
+		/// </summary>
+		/// <returns>A list of completed workouts.</returns>
 		[HttpGet("completed")]
 		public async Task<ActionResult<IEnumerable<Workout>>> GetCompletedWorkoutsByUserId()
 		{
